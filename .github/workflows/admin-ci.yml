@@ -8,6 +8,7 @@ permissions:
   contents: read
 jobs:
   admin-checks:
+    name: Admin CI
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
