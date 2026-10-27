@@ -10,6 +10,7 @@ This monorepo powers the CodedDevs Technology LTD public website and its interna
 - Use the existing Node.js 22, pnpm 10.20.0, TypeScript, Next.js, Express, Zod, PostgreSQL, and Drizzle choices where applicable.
 - Keep changes focused on the assigned issue. Do not introduce new infrastructure, packages, architectural patterns, or product features without a demonstrated need and approval.
 - Inspect existing code and conventions before implementing. Do not assume planned features already exist.
+- For UI or brand-related work, follow `docs/brand.md` and `docs/design.md` once the Product & Brand Designer has provided and approved them. Until then, do not invent brand tokens, visual standards, or design specifications; ask for the approved direction when needed.
 - Keep credentials and environment-specific values out of Git. Do not operate on production systems or data without explicit authorization.
 
 ## Working agreement
@@ -24,4 +25,5 @@ This monorepo powers the CodedDevs Technology LTD public website and its interna
 
 - `docs/architecture.md` — system boundaries and approved technical direction
 - `docs/development.md` — local setup and verification commands
+- `docs/brand.md` and `docs/design.md` — future designer-owned guidelines; not yet available
 - App-level `AGENTS.md` — only rules specific to that application
