@@ -4,6 +4,7 @@ Follow the root `AGENTS.md` in addition to this file.
 
 - This app is the internal CMS. Keep its routes and interfaces separate from the public website.
 - Follow existing Next.js App Router and TypeScript patterns.
+- Follow `docs/brand.md` and `docs/design.md` for admin UI work once approved and added. Until then, avoid inventing design standards.
 - Treat authentication and session state carefully. The API must independently authorize every privileged operation; client-side guards are not security boundaries.
 - Never expose credentials, tokens, or sensitive content in client bundles, URLs, or logs.
 - Use clear validation, feedback, and confirmation for destructive or publishing actions.
