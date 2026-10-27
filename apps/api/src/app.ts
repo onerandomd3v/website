@@ -4,6 +4,8 @@ export function createApp() {
   const app = express();
   app.disable('x-powered-by');
   app.use(express.json({ limit: '1mb' }));
-  app.get('/api/v1/health', (_request, response) => response.json({ status: 'ok' }));
+  app.get('/api/v1/health', (_request, response) =>
+    response.json({ status: 'ok' }),
+  );
   return app;
 }

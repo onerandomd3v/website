@@ -1,11 +1,15 @@
-name: CI
+name: Web CI
 on:
   pull_request:
+    branches: [main]
   push:
     branches: [main]
+permissions:
+  contents: read
 jobs:
-  checks:
+  web-checks:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -16,8 +20,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm format:check
-      - run: pnpm lint
-      - run: pnpm typecheck
-      - run: pnpm test
-      - run: pnpm build
+      - run: pnpm --filter @codeddevs/web lint
+      - run: pnpm --filter @codeddevs/web typecheck
+      - run: pnpm --filter @codeddevs/web test
+      - run: pnpm --filter @codeddevs/web build
