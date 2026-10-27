@@ -24,7 +24,7 @@ The current repository is a scaffold; listing a technology or capability here do
 ## Boundaries
 
 - Keep API-owned business rules and authorization out of frontend applications.
-- Do not connect public browser code directly to PostgreSQL or privileged storage credentials.
+- Neither the public website nor the admin browser client may connect directly to PostgreSQL or privileged storage; both must use the API boundary.
 - Use explicit API contracts and validate input on the server.
 - Keep media access and publishing status governed by server-side policy.
 - Do not add Redis, additional services, or a microservice split without an approved requirement.
