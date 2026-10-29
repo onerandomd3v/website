@@ -42,6 +42,24 @@ Use locally configured environment variables appropriate to the feature being de
 
 PostgreSQL/Drizzle configuration and migration commands must be documented when those capabilities are implemented; the scaffold does not yet establish a verified migration workflow. Do not run migrations against production without explicit authorization.
 
+## Database migrations
+
+The API owns the PostgreSQL schema and reviewed migrations. Generate a migration after a schema change with:
+
+```bash
+pnpm --filter @codeddevs/api db:generate
+```
+
+Review the generated SQL under `apps/api/drizzle/migrations/` before committing it. Apply reviewed migrations explicitly with:
+
+```bash
+pnpm --filter @codeddevs/api db:migrate
+```
+
+`DATABASE_URL` is required for migration execution. The API never runs migrations at startup. Before a destructive production migration, take and verify a backup and document the rollback plan.
+
+Database tests require `TEST_DATABASE_URL` to point to a disposable PostgreSQL database whose name contains `test`. The test suite resets that database's `public` and Drizzle migration schemas, starts the API once to prove startup does not apply migrations, then applies the reviewed migrations and verifies database invariants. Never point `TEST_DATABASE_URL` at development, staging, or production data.
+
 ## Contribution workflow
 
 Create a task-scoped branch, implement the approved change, run relevant checks, and open a PR to `main`. Follow the root and applicable application `AGENTS.md` instructions.
