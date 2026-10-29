@@ -40,7 +40,7 @@ For a focused change, use `pnpm --filter @codeddevs/<app> <script>` with `web`, 
 
 Use locally configured environment variables appropriate to the feature being developed. Do not commit `.env` files, secrets, or credentials. Confirm actual variable names from the implementation rather than inventing them.
 
-PostgreSQL/Drizzle configuration and migration commands must be documented when those capabilities are implemented; the scaffold does not yet establish a verified migration workflow. Do not run migrations against production without explicit authorization.
+Do not run migrations against production without explicit authorization.
 
 ## Database migrations
 
@@ -58,7 +58,7 @@ pnpm --filter @codeddevs/api db:migrate
 
 `DATABASE_URL` is required for migration execution. The API never runs migrations at startup. Before a destructive production migration, take and verify a backup and document the rollback plan.
 
-Database tests require `TEST_DATABASE_URL` to point to a disposable PostgreSQL database whose name contains `test`. The test suite resets that database's `public` and Drizzle migration schemas, starts the API once to prove startup does not apply migrations, then applies the reviewed migrations and verifies database invariants. Never point `TEST_DATABASE_URL` at development, staging, or production data.
+Database tests require `TEST_DATABASE_URL` to point to a disposable PostgreSQL database whose name contains `test` as a separate segment, bounded by the start or end of the name, `-`, or `_` (for example, `codeddevs_test` or `test-db`). The test suite resets that database's `public` and Drizzle migration schemas, starts the API once to prove startup does not apply migrations, then applies the reviewed migrations and verifies database invariants. Never point `TEST_DATABASE_URL` at development, staging, or production data.
 
 ## Contribution workflow
 

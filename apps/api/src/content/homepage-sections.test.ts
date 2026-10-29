@@ -21,6 +21,26 @@ test('homepage section schemas accept approved section payloads', () => {
   assert.equal(section.sectionKey, 'hero');
 });
 
+test('homepage section schemas validate the contact payload', () => {
+  assert.equal(
+    homepageSectionSchema.safeParse({
+      sectionKey: 'contact',
+      payload: {
+        heading: 'Contact CodedDevs',
+        body: 'Reach the team.',
+      },
+    }).success,
+    true,
+  );
+  assert.equal(
+    homepageSectionSchema.safeParse({
+      sectionKey: 'contact',
+      payload: { heading: 'Contact CodedDevs' },
+    }).success,
+    false,
+  );
+});
+
 test('homepage section schemas reject unknown section keys', () => {
   assert.equal(
     homepageSectionKeySchema.safeParse('testimonials').success,
