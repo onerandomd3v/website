@@ -1,9 +1,18 @@
 import type { ReactNode } from 'react';
-export const metadata = { title: 'CodedDevs Admin' };
+import { AuthProvider } from '../src/context/auth-context';
+
+export const metadata = {
+  title: 'CodedDevs Admin',
+  description:
+    'Internal content management system for CodedDevs Technology LTD',
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
